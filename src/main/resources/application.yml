@@ -6,5 +6,6 @@ spring:
     password: password123
     driver-class-name: org.postgresql.Driver
 
+
 server:
   port: 8080

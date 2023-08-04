@@ -1,6 +1,7 @@
 package com.praticando.multitenant.tenant.hibernate;
 
 import com.praticando.multitenant.tenant.context.TenantContext;
+import lombok.NonNull;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
@@ -13,8 +14,9 @@ import java.util.Objects;
 @Component
 public class TenantIdentifierResolver implements CurrentTenantIdentifierResolver, HibernatePropertiesCustomizer {
     @Override
+    @NonNull
     public String resolveCurrentTenantIdentifier() {
-        return Objects.requireNonNullElse(TenantContext.getTenantId(), "TenantContext.getCurrentTenant() is null");
+        return Objects.requireNonNullElse(TenantContext.getTenantId(), "PUBLIC");
     }
 
     @Override

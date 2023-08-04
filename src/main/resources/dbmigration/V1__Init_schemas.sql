@@ -1,3 +1,4 @@
+
 CREATE SCHEMA honda;
 CREATE SCHEMA toyota;
 

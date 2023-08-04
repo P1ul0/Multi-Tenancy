@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("cars")
 @RequiredArgsConstructor
 public class CarController {
 
     private final CarRepository carRepository;
 
     @GetMapping
-    public ResponseEntity<List<Car>> getCars() {
-        return ResponseEntity.ok(carRepository.findAll());
+    public List<Car> getCars() {
+        return carRepository.findAll();
     }
 
 }

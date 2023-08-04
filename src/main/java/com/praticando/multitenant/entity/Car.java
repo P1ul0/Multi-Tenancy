@@ -13,7 +13,8 @@ import java.util.UUID;
 
 @Entity
 @Data
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car {
 
     @Id
