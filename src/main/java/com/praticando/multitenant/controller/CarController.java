@@ -19,6 +19,7 @@ public class CarController {
 
     @GetMapping
     public List<Car> getCars() {
+        System.out.println("Tenant id: " + carRepository.findAll());
         return carRepository.findAll();
     }
 

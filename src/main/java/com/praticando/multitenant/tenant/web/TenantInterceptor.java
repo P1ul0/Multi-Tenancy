@@ -22,7 +22,7 @@ public class TenantInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String tenantId = httpHeaderTenantResolver.resolveTenantId(request);
         TenantContext.setTenantId(tenantId);
-        configureTraces(tenantId, request);
+
         return true;
     }
 
@@ -37,8 +37,8 @@ public class TenantInterceptor implements HandlerInterceptor {
         clear();
     }
 
-    private void configureTraces(String tenantId, HttpServletRequest request) {
-        ServerHttpObservationFilter.findObservationContext((ServerWebExchange) request).ifPresent(context ->
+    private void configureTraces(String tenantId, ServerWebExchange request) {
+        ServerHttpObservationFilter.findObservationContext(request).ifPresent(context ->
                 context.addHighCardinalityKeyValue(KeyValue.of("tenant.id", tenantId)));
     }
 

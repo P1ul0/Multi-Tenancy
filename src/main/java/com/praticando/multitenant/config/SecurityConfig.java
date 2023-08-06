@@ -13,7 +13,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration(proxyBeanMethods = false)
 public class SecurityConfig {
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManagerResolver<HttpServletRequest> authenticationManagerResolver, TenantFilter filter) throws Exception {
+    SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            AuthenticationManagerResolver<HttpServletRequest> authenticationManagerResolver,
+            TenantFilter tenantFilter
+    ) throws Exception {
         return http.build();
     }
 }
